@@ -12,7 +12,7 @@
         ]
  */
 
-let arr = [1, 2, 3 ,4];
+let arr = [1, 2, 3, 4];
 
 let result = [];
 function permute() {
@@ -31,22 +31,43 @@ function dfs(value, temp, current) {
     current.push(value);
     current.push(temp.pop());
     result.push(current.slice());
-    
+
     return;
   }
 
   current.push(value);
 
   for (let i = 0; i < temp.length; i++) {
-    
     let origin = temp.slice();
     origin.splice(i, 1);
     let copy = current.slice();
     dfs(temp[i], origin, current);
     current = copy;
-    
-    
   }
 }
 
 console.log(permute());
+
+function permute2() {
+  let result = [];
+  let map = new Map();
+  arr.forEach((v, index) => {
+    map.add(index, false);
+  });
+  const dfs = (index, list) => {
+    if (index === arr.length) {
+      result.push(list.slice());
+      return;
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+      if (!map.get(i)) {
+        list.push(arr[i]);
+        map.set(i, true);
+        dfs(i + 1);
+        list.pop();
+        map.set(i, false);
+      }
+    }
+  };
+}
