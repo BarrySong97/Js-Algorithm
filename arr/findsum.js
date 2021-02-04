@@ -22,3 +22,31 @@ function findSum(sum) {
 }
 
 console.log(findSum(9));
+
+
+var twoSum = function (nums, target) {
+  let len = nums.length;
+
+  if (!len) {
+    return [];
+  }
+
+  if (len === 2 && nums[0] + nums[1] === target) {
+    return nums;
+  }
+
+  let map = new Map();
+  map.set(nums[0], 0);
+  let res = [];
+  for (let i = 1; i < len;  ++i) {
+    if (map.has(target - nums[i])) {
+      res = res.concat([map.get(target - nums[i]), i]);
+    }
+    map.set(nums[i], i);
+  }
+
+  return res;
+};
+console.log(twoSum([3, 2, 4], 6));
+
+

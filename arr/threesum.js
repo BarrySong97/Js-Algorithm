@@ -10,32 +10,38 @@
  * [-1, -1, 0, 1, 2]
  */
 
-arr = [-8,-8, -2, -2, 0, 1, 2, -1, -1, -4, 3, 3, 6, 4];
+arr = [-2,-3,0,0,-2];
 
-function threeSum() {
-  arr = arr.sort((a, b) => {
+function threeSum(nums) {
+  nums = nums.sort((a, b) => {
     return a - b;
   });
 
-  console.log(arr);
   let result = [];
 
-  let len = arr.length;
+  let len = nums.length;
   let k = 0;
   let r = len - 1;
   let l = 1;
 
   let m = -1;
 
-  while (arr.length > 3) {
+  while (nums.length >= 3) {
     if (r === l) {
-      arr.shift();
+      let shift = nums.shift();
+      while (shift === nums[k]) {
+        shift = nums.shift();
+
+      }  
       l = 1;
-      r = arr.length - 1;
+      r = nums.length - 1;
+    }
+    if (nums[k] > 0 || nums.length < 3) {
+      break;
     }
 
-    if (arr[k] + arr[l] + arr[r] === 0) {
-      result.push([arr[k], arr[l], arr[r]]);
+    if (nums[k] + nums[l] + nums[r] === 0) {
+      result.push([nums[k], nums[l], nums[r]]);
       m++;
       if (
         m >= 1 &&
@@ -49,9 +55,11 @@ function threeSum() {
       }
     }
 
-    arr[l] + arr[r] + arr[k] > 0 ? r-- : l++;
+    nums[l] + nums[r] + nums[k] > 0 ? r-- : l++;
   }
   return result;
 }
 
-console.log(threeSum());
+console.log(threeSum(arr));
+
+
