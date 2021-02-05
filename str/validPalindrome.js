@@ -34,3 +34,23 @@ function validPalindrome(str) {
 }
 
 console.log(validPalindrome('yebssey'));
+
+var isPalindrome = function(s) {
+    if (s.length === 0) {
+        return true;
+    }
+    s = s.replace(/[^0-9a-zA-Z]/g, '').toLowerCase();
+    console.log(s);
+    let i = 0;
+    let j = s.length - 1;
+    while (i < j) {
+        if (s[i++] !== s[j--]) {
+           
+             return false;
+         }
+    }
+
+    return true;
+};
+
+console.log(isPalindrome("race a car"));

@@ -114,7 +114,7 @@ var levelOrder = function (root) {
 var invertTree = function(root) {
    
     if (!root) {
-        return root;
+        return rootgi;
     }
 
     let temp = root.left;
