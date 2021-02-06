@@ -15,7 +15,7 @@ class Node {
 
   printList() {
     let current = this;
-    while(current && current.val) {
+    while (current && current.val) {
       console.log(current.val);
       current = current.next
     }
@@ -62,4 +62,33 @@ function merge2List() {
   return head.next;
 }
 
-merge2List().printList();
+// merge2List().printList();
+
+
+var mergeTwoLists = function (l1, l2) {
+  let dumy = new Node();
+
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      dumy.next = l1;
+      l1 = l1.next;
+    } else {
+      dumy.next = l2;
+      l2 = l2.next;
+    }
+
+    dumy = dumy.next;
+  }
+
+  if (l1) {
+    dumy.next = l1;
+  }
+
+  if (l2) {
+    dumy.next = l2;
+  }
+
+  return dumy.next;
+};
+
+mergeTwoLists(linkList1, linkList2).printList()
