@@ -73,3 +73,23 @@ function deleteRepeat() {
 }
 
 deleteRepeat().printList();
+
+
+function deleteDuplicate() {
+  let dummy = new Node();
+  dummy.next = linkList;
+  let current = dummy;
+
+  while(current.next && current.next.next) {
+    let val = current.next.val;
+    if (current.next.val === current.next.next.val) {
+      while(current.next && current.next.val === val) {
+        current.next = current.next.next;
+      }
+    } else {
+      current = current.next;
+    }
+  }
+
+  return dummy.next;
+}
