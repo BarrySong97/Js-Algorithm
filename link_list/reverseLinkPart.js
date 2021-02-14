@@ -85,7 +85,36 @@ function reverseLinkPart(start, end) {
     return head;
   }
 
-  
+
 }
 
-reverseLinkPart(1, 1).printList();
+// reverseLinkPart(1, 1).printList();
+
+
+function reverseBetween(start, end) {
+  let dummy = new Node();
+  dummy.next = linkList;
+  let p = dummy;
+  for (let i = 0; i < start - 1; i++) {
+    p = p.next;
+  }
+
+  let leftHead = p;
+  let f = leftHead.next;
+  let pre = leftHead.next;
+  let cur = pre.next;
+  for (let i = start; i < end; i++) {
+    let next = cur.next;
+    cur.next = pre;
+    pre = cur;
+    cur = next;
+  }
+
+  p.next = pre;
+  f.next = cur;
+
+  return dummy.next;
+
+}
+
+reverseBetween(2, 4).printList();
