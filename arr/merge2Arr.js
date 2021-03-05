@@ -7,34 +7,34 @@
  *
  */
 
-let arr1 = [1, 2, 3, 4, 5, 6, 7];
+let arr1 = [20, 20, 20, 0, 0, 0];
 
-let arr2 = [3, 4, 7, 20, 12];
+let arr2 = [3, 4, 7];
 
-function merge() {
+// function merge() {
 
-  let result = new Array();
+//   let result = new Array();
 
-  while (arr1.length && arr2.length) {
-    if (arr1[0] > arr2[0]) {
-      result.push(arr2.shift());
-    } else {
-      result.push(arr1.shift());
-    }
-  }
+//   while (arr1.length && arr2.length) {
+//     if (arr1[0] > arr2[0]) {
+//       result.push(arr2.shift());
+//     } else {
+//       result.push(arr1.shift());
+//     }
+//   }
 
-  while (arr1.length) {
-    result.push(arr1.shift());
-  }
+//   while (arr1.length) {
+//     result.push(arr1.shift());
+//   }
 
-  while (arr2.length) {
-    result.push(arr2.shift());
-  }
+//   while (arr2.length) {
+//     result.push(arr2.shift());
+//   }
 
-  return result;
-}
+//   return result;
+// }
 
-console.log(merge());
+// console.log(merge());
 
 
 
@@ -46,8 +46,6 @@ console.log(merge());
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function (nums1, m, nums2, n) {
-
-
   while (n > 0) {
     if (nums1[m - 1] > nums2[n - 1]) {
       nums1[m + n - 1] = nums1[--m];
@@ -55,5 +53,4 @@ var merge = function (nums1, m, nums2, n) {
       nums1[m + n - 1] = nums2[--n];
     }
   }
-
 };
